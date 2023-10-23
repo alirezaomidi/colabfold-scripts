@@ -39,3 +39,6 @@ To run on Graham, first install [sshpass](https://sourceforge.net/projects/sshpa
 Substitute:
 - `YOURPASSWORD` with your Compute Canada account's password
 - `EXPERIMENTNAME` with an arbitrary experiment name. This is the directory where ColabFold will save all output files in.
+
+### More on Run Scripts
+The run scripts use SLURM array jobs to simultaneously submit a few colabfold jobs. 

@@ -29,7 +29,6 @@ END=\$((\$BEGIN + 3))
 
 echo "$@"
 srun parallel -j4 CUDA_VISIBLE_DEVICES='{=1 \$_=\$arg[1]%4 =}' python -u batch.py \
-     --host-url https://localhost:\$LOCALPORT \
      --num-recycle 20 \
      --recycle-early-stop-tolerance 0.5 \
      --model-type alphafold2_multimer_v2 \
