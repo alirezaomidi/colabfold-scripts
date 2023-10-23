@@ -2,7 +2,7 @@
 a few scripts to run ColabFold painlessly
 
 ## Compute Canada
-To install:
+### Install
 ```bash
 # load necessary modules
 module load gcc/9.3.0 openmpi/4.0.3 cuda/11.4 cudnn/8.2.0 kalign/2.03 hmmer/3.2.1 openmm-alphafold/7.5.1 hh-suite/3.3.0 python/3.8 mmseqs2
@@ -25,7 +25,14 @@ git clone https://github.com/alirezaomidi/colabfold-scripts.git
 cd colabfold-scripts/
 ```
 
-To run on Graham:
+### Run on Cedar
+```bash
+./slurm/cedar.sh path/to/fastafile.fasta ~/scratch/colabfold/exp/EXPERIMENTNAME
+```
+Substitute `EXPERIMENTNAME` with an arbitrary experiment name. This is the directory where ColabFold will save all output files in.
+
+### Run on Graham:
+To run on Graham, first install `sshpass`, then:
 ```bash
 ./slurm/graham.sh YOURPASSWORD path/to/fastafile.fasta ~/scratch/colabfold/exp/EXPERIMENTNAME
 ```
