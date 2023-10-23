@@ -43,7 +43,11 @@ mkdir ./build
 make install
 ```
 
-Then go back to the `~/scratch/colabfold-scripts` directory and use:
+Then:
+```bash
+cd ~/scratch/colabfold-scripts/
+```
+And:
 ```bash
 ./slurm/graham.sh YOURPASSWORD path/to/fastafile.fasta ~/scratch/colabfold/exp/EXPERIMENTNAME
 ```
