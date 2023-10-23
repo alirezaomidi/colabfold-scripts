@@ -41,7 +41,6 @@ srun parallel -j4 CUDA_VISIBLE_DEVICES='{=1 \$_=\$arg[1]%4 =}' python -u batch.p
      --recycle-early-stop-tolerance 0.5 \
      --model-type alphafold2_multimer_v2 \
      --num-seeds 5 \
-     --save-all \
      --zip \
      --n-batch 32 \
      --batch-id {} \

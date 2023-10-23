@@ -5,7 +5,7 @@ sbatch <<EOT
 #SBATCH --account=def-gsponer
 #SBATCH --time=2-23:58:00
 #SBATCH --nodes=1
-#SBATCH --array=0-4
+#SBATCH --array=0-1
 #SBATCH --gpus-per-node=p100:4
 #SBATCH --cpus-per-task=24
 #SBATCH --mem=120000
@@ -34,7 +34,7 @@ srun parallel -j4 CUDA_VISIBLE_DEVICES='{=1 \$_=\$arg[1]%4 =}' python -u batch.p
      --model-type alphafold2_multimer_v2 \
      --num-seeds 1 \
      --zip \
-     --n-batch 16 \
+     --n-batch 8 \
      --batch-id {} \
      $@ ::: \$(seq \$BEGIN \$END)
 
