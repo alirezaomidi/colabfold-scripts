@@ -32,7 +32,18 @@ cd colabfold-scripts/
 Substitute `EXPERIMENTNAME` with an arbitrary experiment name. This is the directory where ColabFold will save all output files in.
 
 ### Run on Graham:
-To run on Graham, first install [sshpass](https://sourceforge.net/projects/sshpass/), then:
+To run on Graham, first install [sshpass](https://sourceforge.net/projects/sshpass/):
+```bash
+cd ~/
+wget -O sshpass-1.10.tar.gz https://sourceforge.net/projects/sshpass/files/sshpass/1.10/sshpass-1.10.tar.gz/download
+tar xvzf sshpass-1.10.tar.gz
+cd sshpass-1.10
+mkdir ./build
+./configure --prefix=$PWD/build
+make install
+```
+
+Then use:
 ```bash
 ./slurm/graham.sh YOURPASSWORD path/to/fastafile.fasta ~/scratch/colabfold/exp/EXPERIMENTNAME
 ```

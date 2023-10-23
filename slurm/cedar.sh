@@ -10,7 +10,7 @@ sbatch <<EOT
 #SBATCH --cpus-per-task=24
 #SBATCH --mem=120000
 #SBATCH --output=outputs/%A.%a.out
-#SBATCH --mail-user=aomidi@student.ubc.ca # adjust this to match your email address
+#SBATCH --mail-user=CWL@student.ubc.ca # adjust this to match your email address
 #SBATCH --mail-type=END
 #SBATCH --mail-type=FAIL
 
@@ -32,8 +32,7 @@ srun parallel -j4 CUDA_VISIBLE_DEVICES='{=1 \$_=\$arg[1]%4 =}' python -u batch.p
      --num-recycle 20 \
      --recycle-early-stop-tolerance 0.5 \
      --model-type alphafold2_multimer_v2 \
-     --num-seeds 5 \
-     --save-all \
+     --num-seeds 1 \
      --zip \
      --n-batch 16 \
      --batch-id {} \

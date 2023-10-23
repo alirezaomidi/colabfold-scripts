@@ -10,7 +10,7 @@ sbatch <<EOT
 #SBATCH --cpus-per-task=44
 #SBATCH --mem=170000
 #SBATCH --output=outputs/%A.%a.out
-#SBATCH --mail-user=aomidi@student.ubc.ca # adjust this to match your email address
+#SBATCH --mail-user=CWL@student.ubc.ca # adjust this to match your email address
 #SBATCH --mail-type=END
 #SBATCH --mail-type=FAIL
 
