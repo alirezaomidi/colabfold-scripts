@@ -26,9 +26,15 @@ cd colabfold-scripts/
 ```
 
 ### Run on Cedar
+To use one GPU:
 ```bash
-./slurm/cedar.sh path/to/fastafile.fasta ~/scratch/colabfold/exp/EXPERIMENTNAME
+./slurm/cedar-single-gpu.sh path/to/fastafile.fasta ~/scratch/colabfold/exp/EXPERIMENTNAME
 ```
+and to use multiple GPUs:
+```bash
+./slurm/cedar-multi-gpu.sh path/to/fastafile.fasta ~/scratch/colabfold/exp/EXPERIMENTNAME
+```
+
 Substitute `EXPERIMENTNAME` with an arbitrary experiment name. This is the directory where ColabFold will save all output files in.
 
 ### Run on Graham:
