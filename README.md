@@ -47,17 +47,22 @@ Then:
 ```bash
 cd ~/scratch/colabfold-scripts/
 ```
-And:
+To use one GPU:
 ```bash
-./slurm/graham.sh YOURPASSWORD path/to/fastafile.fasta ~/scratch/colabfold/exp/EXPERIMENTNAME
+./slurm/graham-single-gpu.sh YOURPASSWORD path/to/fastafile.fasta ~/scratch/colabfold/exp/EXPERIMENTNAME
 ```
+and to use multiple GPUs:
+```bash
+./slurm/graham-multi-gpu.sh YOURPASSWORD path/to/fastafile.fasta ~/scratch/colabfold/exp/EXPERIMENTNAME
+```
+
 Substitute:
 - `YOURPASSWORD` with your Compute Canada account's password
 - `EXPERIMENTNAME` with an arbitrary experiment name. This is the directory where ColabFold will save all output files in.
 
 ### More on Run Scripts
 #### Array Jobs
-The run scripts use SLURM array jobs to simultaneously submit a few colabfold jobs. For example the following line will submit 8 parallel jobs:
+The multi GPU run scripts use SLURM array jobs to simultaneously submit a few colabfold jobs. For example the following line will submit 8 parallel jobs:
 ```
 #SBATCH --array=0-7
 ```
@@ -75,4 +80,4 @@ source ~/alphafold_env/bin/activate
 
 python batch.py path/to/fastafile.fasta ~/scratch/colabfold/exp/EXPERIMENTNAME --only-msa
 ```
-This comamnd will request for MSAs one-by-one and save them in the `~/scratch/colabfold/exp/EXPERIMENTNAME/msas` directory. You can then submit the jobs as previously described. The jobs will automatically find the MSAs and use them instead of requesting new ones.
+This comamnd will request for MSAs one-by-one and save them in the `~/scratch/colabfold/exp/EXPERIMENTNAME/` directory. You can then submit the jobs as previously described. The jobs will automatically find the MSAs and use them instead of requesting new ones.
