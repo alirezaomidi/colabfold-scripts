@@ -291,6 +291,7 @@ def main():
     parser.add_argument('--n-batch', type=int, default=1, help='Number of batches to split the input into')
     parser.add_argument('--batch-id', type=int, default=0, help='Batch id to run on')
     parser.add_argument('--only-msa', default=False, action="store_true", help='Only run MSA')
+    parser.add_argument('--only-download-params', default=False, action="store_true", help='Only download AlphaFold parameters')
 
     args = parser.parse_args()
 
@@ -320,6 +321,15 @@ def main():
         if uses_api and args.host_url == DEFAULT_API_SERVER:
             print(ACCEPT_DEFAULT_TERMS, file=sys.stderr)
 
+    model_type = set_model_type(is_complex, args.model_type)
+
+    if args.only_download_params:
+        download_alphafold_params(model_type, data_dir)
+
+    model_order = [int(i) for i in args.model_order.split(",")]
+
+    assert args.recompile_padding >= 0, "Can't apply negative padding"
+
     if args.only_msa:
         with no_ssl_verification():
             get_msas(
@@ -335,15 +345,6 @@ def main():
                 user_agent=user_agent,
             )
         return
-
-    model_type = set_model_type(is_complex, args.model_type)
-
-    with no_ssl_verification():
-        download_alphafold_params(model_type, data_dir)
-
-    model_order = [int(i) for i in args.model_order.split(",")]
-
-    assert args.recompile_padding >= 0, "Can't apply negative padding"
 
     # backward compatibility
     if args.amber and args.num_relax == 0:
