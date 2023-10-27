@@ -55,7 +55,7 @@ cd ~/scratch/colabfold-scripts/
 module load gcc/9.3.0 openmpi/4.0.3 cuda/11.4 cudnn/8.2.0 kalign/2.03 hmmer/3.2.1 openmm-alphafold/7.5.1 hh-suite/3.3.0 python/3.8 mmseqs2
 source ~/alphafold_env/bin/activate
 
-python batch.py path/to/fastafile.fasta ~/scratch/colabfold/exp/EXPERIMENTNAME --only-download-params
+python batch.py path/to/fastafile.fasta ~/scratch/colabfold/exp/EXPERIMENTNAME --model-type alphafold2_multimer_v2 --only-download-params
 ```
 
 To use one GPU:
