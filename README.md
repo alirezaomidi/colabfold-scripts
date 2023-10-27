@@ -1,8 +1,7 @@
 # ColabFold Scripts
 a few scripts to run ColabFold painlessly
 
-## Compute Canada
-### Install
+## Install on Compute Canada
 ```bash
 # load necessary modules
 module load gcc/9.3.0 openmpi/4.0.3 cuda/11.4 cudnn/8.2.0 kalign/2.03 hmmer/3.2.1 openmm-alphafold/7.5.1 hh-suite/3.3.0 python/3.8 mmseqs2
@@ -25,7 +24,7 @@ git clone https://github.com/alirezaomidi/colabfold-scripts.git
 cd colabfold-scripts/
 ```
 
-### Run on Cedar
+## Run on Cedar
 To use one GPU:
 ```bash
 ./slurm/cedar-single-gpu.sh path/to/fastafile.fasta ~/scratch/colabfold/exp/EXPERIMENTNAME
@@ -37,7 +36,7 @@ and to use multiple GPUs:
 
 Substitute `EXPERIMENTNAME` with an arbitrary experiment name. This is the directory where ColabFold will save all output files in.
 
-### Run on Graham:
+## Run on Graham:
 To run on Graham, first install [sshpass](https://sourceforge.net/projects/sshpass/) in your home (`~`) directory:
 ```bash
 cd ~/
@@ -73,8 +72,7 @@ Substitute:
 - `YOURPASSWORD` with your Compute Canada account's password
 - `EXPERIMENTNAME` with an arbitrary experiment name. This is the directory where ColabFold will save all output files in.
 
-### More on Run Scripts
-#### Array Jobs
+## Array Jobs
 The multi GPU run scripts use SLURM array jobs to simultaneously submit a few colabfold jobs. For example the following line will submit 8 parallel jobs:
 ```
 #SBATCH --array=0-7
@@ -84,7 +82,7 @@ Since in each job we ask for full node allocations and make use of 4 GPUs in eac
 1. Modify `#SBATCH --array=0-7` to `#SBATCH --array=0-1` to ask for 2 nodes
 2. Modify `--n-batch 32` to `--n-batch 8` at the near bottom of the script.
 
-#### MSA Public Server Rate Limit
+## MSA Public Server Rate Limit
 ColabFold's public MSA server [https://api.colabfold.com](https://api.colabfold.com) has a rate limit of a few request per minute. To avoid this rate limit, we can ask for MSAs before running the neural-network. To do so, Run the following **in a login node**:
 ```bash
 cd ~/scratch/colabfold-scripts/
@@ -94,3 +92,9 @@ source ~/alphafold_env/bin/activate
 python batch.py path/to/fastafile.fasta ~/scratch/colabfold/exp/EXPERIMENTNAME --only-msa
 ```
 This comamnd will request for MSAs one-by-one and save them in the `~/scratch/colabfold/exp/EXPERIMENTNAME/` directory. You can then submit the jobs as previously described. The jobs will automatically find the MSAs and use them instead of requesting new ones.
+
+## Permission denied when running scripts
+If you get a `Permission denied` error when running the scripts, run the following command:
+```bash
+chmod +x ~/scratch/colabfold-scripts/slurm/*.sh
+```
