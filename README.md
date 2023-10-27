@@ -58,12 +58,9 @@ source ~/alphafold_env/bin/activate
 python batch.py path/to/fastafile.fasta ~/scratch/colabfold/exp/EXPERIMENTNAME --only-download-params
 ```
 
-Then:
-```bash
-cd ~/scratch/colabfold-scripts/
-```
 To use one GPU:
 ```bash
+cd ~/scratch/colabfold-scripts/
 ./slurm/graham-single-gpu.sh YOURPASSWORD path/to/fastafile.fasta ~/scratch/colabfold/exp/EXPERIMENTNAME
 ```
 and to use multiple GPUs:
