@@ -38,7 +38,7 @@ and to use multiple GPUs:
 Substitute `EXPERIMENTNAME` with an arbitrary experiment name. This is the directory where ColabFold will save all output files in.
 
 ### Run on Graham:
-To run on Graham, first install [sshpass](https://sourceforge.net/projects/sshpass/):
+To run on Graham, first install [sshpass](https://sourceforge.net/projects/sshpass/) in your home (`~`) directory:
 ```bash
 cd ~/
 wget -O sshpass-1.10.tar.gz https://sourceforge.net/projects/sshpass/files/sshpass/1.10/sshpass-1.10.tar.gz/download
