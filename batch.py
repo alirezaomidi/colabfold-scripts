@@ -325,6 +325,7 @@ def main():
 
     if args.only_download_params:
         download_alphafold_params(model_type, data_dir)
+        return
 
     model_order = [int(i) for i in args.model_order.split(",")]
 
