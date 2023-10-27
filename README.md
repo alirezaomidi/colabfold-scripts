@@ -57,6 +57,7 @@ source ~/alphafold_env/bin/activate
 
 python batch.py path/to/fastafile.fasta ~/scratch/colabfold/exp/EXPERIMENTNAME --model-type alphafold2_multimer_v2 --only-download-params
 ```
+If you want to use another AlphaFold version, change `alphafol2_multimer_v2`. A list of options can be found in `batch.py` file, under `model_type` argument.
 
 To use one GPU:
 ```bash
