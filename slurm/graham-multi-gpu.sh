@@ -1,4 +1,8 @@
 #!/bin/bash
+
+PASSWORD=$1
+shift
+
 sbatch <<EOT
 #!/bin/bash
 #SBATCH --job-name=colabfold
@@ -21,9 +25,8 @@ source ~/alphafold_env/bin/activate
 # ssh tunnel to the mmseqs public api
 for ((i=0; i<10; ++i)); do
   LOCALPORT=\$(shuf -i 1024-65535 -n 1)
-  ~/sshpass-1.10/build/bin/sshpass -p "$1" ssh login1 -L \$LOCALPORT:api.colabfold.com:443 -N -f && break
+  ~/sshpass-1.10/build/bin/sshpass -p "$PASSWORD" ssh login1 -L \$LOCALPORT:api.colabfold.com:443 -N -f && break
 done || { echo "Giving up forwarding license port after \$i attempts..."; exit 1; }
-shift
 
 # print gpu info
 nvidia-smi
