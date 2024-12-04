@@ -7,13 +7,13 @@ sbatch <<EOT
 #SBATCH --nodes=1
 #SBATCH --gpus-per-node=1
 #SBATCH --cpus-per-task=8
-#SBATCH --mem=64000
+#SBATCH --mem=60G
 #SBATCH --output=outputs/%A.%a.out
 #SBATCH --mail-user=CWL@student.ubc.ca # adjust this to match your email address
 #SBATCH --mail-type=END
 #SBATCH --mail-type=FAIL
 
-module load gcc/9.3.0 openmpi/4.0.3 cuda/11.4 cudnn/8.2.0 kalign/2.03 hmmer/3.2.1 openmm-alphafold/7.5.1 hh-suite/3.3.0 python/3.8 mmseqs2
+module load StdEnv/2020 gcc/9.3.0 openmpi/4.0.3 cuda/11.4 cudnn/8.2.0 kalign/2.03 hmmer/3.2.1 openmm-alphafold/7.5.1 hh-suite/3.3.0 python/3.8 mmseqs2
 
 source ~/alphafold_env/bin/activate
 
@@ -25,8 +25,7 @@ mkdir -p $2/
 
 echo "$@"
 srun python -u batch.py \
-     --num-recycle 20 \
-     --recycle-early-stop-tolerance 0.5 \
+     --num-recycle 3 \
      --model-type alphafold2_multimer_v2 \
      --num-seeds 1 \
      --zip \
