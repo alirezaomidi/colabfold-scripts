@@ -30,7 +30,7 @@ Since there is no access to the Internet on Graham and Narval compute nodes, you
 Run the following script to download AlphaFold model parameters. This needs to be run only once. You can specify any:
 ```bash
 cd ~/scratch/colabfold-scripts/
-module load gcc/9.3.0 openmpi/4.0.3 cuda/11.4 cudnn/8.2.0 kalign/2.03 hmmer/3.2.1 openmm-alphafold/7.5.1 hh-suite/3.3.0 python/3.8 mmseqs2
+module load StdEnv/2020 gcc/9.3.0 openmpi/4.0.3 cuda/11.4 cudnn/8.2.0 kalign/2.03 hmmer/3.2.1 openmm-alphafold/7.5.1 hh-suite/3.3.0 python/3.8 mmseqs2
 source ~/alphafold_env/bin/activate
 
 python batch.py path/to/dummy/fastafile.fasta /path/to/dummy/directory --model-type alphafold2_multimer_v2 --only-download-params
@@ -69,7 +69,7 @@ Since in each job we ask for full node allocations and make use of 4 GPUs in eac
 ColabFold's public MSA server [https://api.colabfold.com](https://api.colabfold.com) has a rate limit of a few request per minute. To avoid this rate limit, we can ask for MSAs before running the neural-network. To do so, Run the following **in a login node**:
 ```bash
 cd ~/scratch/colabfold-scripts/
-module load gcc/9.3.0 openmpi/4.0.3 cuda/11.4 cudnn/8.2.0 kalign/2.03 hmmer/3.2.1 openmm-alphafold/7.5.1 hh-suite/3.3.0 python/3.8 mmseqs2
+module load StdEnv/2020 gcc/9.3.0 openmpi/4.0.3 cuda/11.4 cudnn/8.2.0 kalign/2.03 hmmer/3.2.1 openmm-alphafold/7.5.1 hh-suite/3.3.0 python/3.8 mmseqs2
 source ~/alphafold_env/bin/activate
 
 python batch.py path/to/fastafile.fasta ~/scratch/colabfold/exp/EXPERIMENTNAME --only-msa
