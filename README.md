@@ -12,7 +12,7 @@ source ~/alphafold_env/bin/activate
 pip install --no-index --upgrade pip
 pip install --no-index alphafold
 pip install --no-deps alphafold-colabfold
-pip install --no-deps "colabfold[alphafold]@git+https://github.com/sokrypton/ColabFold" appdirs py3Dmol tqdm urllib3 requests
+pip install --no-deps "colabfold[alphafold]@git+https://github.com/sokrypton/ColabFold@v1.5.3" appdirs py3Dmol tqdm urllib3 requests
 # test wheter we succeeded or not
 python -m colabfold.batch
 ```
