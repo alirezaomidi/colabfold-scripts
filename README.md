@@ -33,7 +33,7 @@ cd ~/scratch/colabfold-scripts/
 module load StdEnv/2020 gcc/9.3.0 openmpi/4.0.3 cuda/11.4 cudnn/8.2.0 kalign/2.03 hmmer/3.2.1 openmm-alphafold/7.5.1 hh-suite/3.3.0 python/3.8 mmseqs2
 source ~/alphafold_env/bin/activate
 
-python batch.py path/to/dummy/fastafile.fasta /path/to/dummy/directory --model-type alphafold2_multimer_v2 --only-download-params
+python -m colabfold.download alphafold2_multimer_v3  # or other available params, e.g. alphafold2_ptm
 ```
 
 Refer to [MSA download section](#msa-public-server-rate-limit) for guidance on how to download multiple sequence alignments. This download should be done on login nodes.
@@ -50,8 +50,7 @@ or to use multiple GPUs:
 Substitute `EXPERIMENTNAME` with an arbitrary experiment name. This is the directory where ColabFold will save all output files in.
 
 
-
-If you want to use another AlphaFold version, change `alphafol2_multimer_v2`. A list of options can be found in `batch.py` file, under `model_type` argument.
+If you want to use another AlphaFold version, change `alphafol2_multimer_v3`. A list of options can be found in `batch.py` file, under `model_type` argument.
 
 
 ## Array Jobs

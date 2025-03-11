@@ -2,7 +2,7 @@
 #SBATCH --job-name=colabfold
 #SBATCH --account=def-gsponer  # or rrg-gsponer
 #SBATCH --time=11:58:00
-#SBATCH --nodes=1
+#SBATCH --array=0-1
 #SBATCH --gpus-per-node=1
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=60G
@@ -17,6 +17,6 @@ nvidia-smi
 
 echo "$@"
 srun python -u batch.py \
-     --n-batch 1 \
-     --batch-id 0 \
+     --n-batch 2 \
+     --batch-id $SLURM_ARRAY_TASK_ID \
      $@
